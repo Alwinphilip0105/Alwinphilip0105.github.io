@@ -108,6 +108,54 @@ body {
     transform: translateX(-50%);
     border-bottom: 3px dashed #00FF94;
 }
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'IBM Plex Mono', monospace;
+    overflow-x: hidden; /* Prevent unwanted horizontal scrolling */
+}
+
+/* Main Container for Horizontal Layout */
+main {
+    display: flex; /* Arrange sections side by side */
+    flex-direction: row; /* Ensure horizontal layout */
+    width: 100%; /* Take full width */
+    height: 100vh; /* Full viewport height */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scroll-snap-type: x mandatory; /* Smooth snapping between sections */
+}
+
+/* Individual Sections */
+header, section, footer {
+    flex: 0 0 100%; /* Each section occupies full width of the viewport */
+    height: 100vh; /* Full height of the viewport */
+    scroll-snap-align: start; /* Snap to the start of each section */
+    display: flex; /* Center content */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Example Styling for Distinction */
+header {
+    background-color: #f0f0f0;
+}
+#services {
+    background-color: #e0e0e0;
+}
+#works {
+    background-color: #d0d0d0;
+}
+#contact {
+    background-color: #c0c0c0;
+}
+footer {
+    background-color: #b0b0b0;
+}
+
 
 /*
  * ==================
