@@ -122,6 +122,38 @@ SERVICE_BOXES.forEach(service => {
     currentServiceBG = null;
   });
 });
+// Handle form submission
+const CONTACT_FORM = document.querySelector('#contactForm'); // Ensure this matches your form ID
+
+CONTACT_FORM.addEventListener('submit', async (event) => {
+  event.preventDefault(); // Prevent default form submission behavior
+
+  // Extract form data
+  const name = document.querySelector('#contactNameTxt').value;
+  const message = document.querySelector('#contactDescriptionTxt').value;
+
+  try {
+    // Send data to backend
+    const response = await fetch('http://localhost:3000/send', { // Replace with your backend URL
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, message }),
+    });
+
+    // Handle response
+    if (response.ok) {
+      alert('Your message has been sent successfully!');
+      CONTACT_FORM.reset(); // Clear form fields
+    } else {
+      alert('Failed to send your message. Please try again.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('An error occurred. Please try again later.');
+  }
+});
 
 // Handles smooth scrolling
 new SweetScroll({
